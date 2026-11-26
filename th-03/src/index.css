@@ -1,4 +1,4 @@
-/* Màu theo chủ đề: mặc định là sáng, có thể đổi sang tối bằng nút ở góc trên bên trái */
+/* Màu theo chủ đề: mặc định là sáng. Bài 2 chỉ cần thêm class light / dark vào div.app */
 .app,
 .app.light {
   --bg: #ffffff;
@@ -44,7 +44,8 @@ h1 {
   font-size: 2rem;
 }
 
-h2 {
+h2,
+h3 {
   margin: 0 0 12px;
   font-size: 1.15rem;
 }
@@ -238,4 +239,39 @@ td button:hover {
   border-left: 4px solid var(--accent);
   border-radius: 8px;
   font-weight: 600;
+}
+
+/* Bài 3: thanh công cụ lịch thi đấu, phân bố kết quả, nút đặt lại */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.toolbar label {
+  margin-right: 8px;
+}
+
+.distribution {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.distribution li {
+  margin-bottom: 4px;
+}
+
+.reset-button {
+  margin-top: 12px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.card h3 {
+  margin: 16px 0 8px;
+  font-size: 1rem;
 }
