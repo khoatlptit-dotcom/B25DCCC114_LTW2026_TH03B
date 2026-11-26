@@ -80,3 +80,24 @@ export const calcMatchStats = (matches) => {
   const average = count === 0 ? 0 : Math.round((goals / count) * 100) / 100;
   return { count, goals, average, counts };
 };
+
+const GOAL_INVALID = 'Hãy chọn đội, nhập số điểm mục tiêu (từ 0) và số trận còn lại (từ 1)';
+
+const toNumber = (text) => (String(text).trim() === '' ? NaN : Number(text));
+
+export const calcNeeded = (standings, teamId, target, remaining) => {
+  const row = standings.find((r) => r.id === Number(teamId));
+  const goal = toNumber(target);
+  const left = toNumber(remaining);
+
+  if (!row || !Number.isInteger(goal) || goal < 0 || !Number.isInteger(left) || left < 1) {
+    return GOAL_INVALID;
+  }
+
+  const need = goal - row.points;
+  if (need <= 0) return 'Đội đã đạt mục tiêu';
+  if (need > 3 * left) return 'Không thể đạt mục tiêu này';
+
+  const wins = Math.max(0, Math.ceil((need - left) / 2));
+  return `Cần thêm ${need} điểm ở ${left} trận còn lại, tối thiểu ${wins} trận thắng`;
+};
