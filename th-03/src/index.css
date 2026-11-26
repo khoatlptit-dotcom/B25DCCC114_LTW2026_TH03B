@@ -1,0 +1,192 @@
+/* Màu theo chủ đề: mặc định là sáng. Bài 2 chỉ cần thêm class light / dark vào div.app */
+.app {
+  --bg: #ffffff;
+  --text: #18212c;
+  --muted: #5b6676;
+  --surface: #f5f7fb;
+  --border: #d9dee7;
+  --accent: #1565c0;
+  --accent-text: #ffffff;
+  --danger: #c62828;
+  --input-bg: #ffffff;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px max(16px, calc((100% - 980px) / 2)) 48px;
+  box-sizing: border-box;
+}
+
+.app.dark {
+  --bg: #1f2430;
+  --text: #e8eaf0;
+  --muted: #a3acbb;
+  --surface: #272d3b;
+  --border: #3a4254;
+  --accent: #64a8f0;
+  --accent-text: #10151f;
+  --input-bg: #1f2430;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 2rem;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+/* Bảng */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: var(--surface);
+  font-weight: 600;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Thống kê */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.stats-grid p {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Ô nhập, ô chọn, nút */
+input,
+select,
+button {
+  font: inherit;
+  color: var(--text);
+}
+
+input,
+select {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+input[type='number'] {
+  width: 72px;
+}
+
+button {
+  cursor: pointer;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+}
+
+td button {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: transparent;
+}
+
+td button:hover {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+/* Form thêm trận */
+.add-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px 20px;
+  align-items: start;
+}
+
+.add-form label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.add-form select,
+.add-form input {
+  width: 100%;
+}
+
+.add-form button[type='submit'] {
+  grid-column: 1 / -1;
+  justify-self: start;
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-weight: 600;
+  padding: 8px 20px;
+}
+
+[role='alert'] {
+  margin-top: 4px;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+/* Màn hình nhỏ: bảng cuộn ngang */
+@media (max-width: 720px) {
+  .card {
+    overflow-x: auto;
+  }
+  table {
+    min-width: 620px;
+  }
+}
